@@ -1,5 +1,72 @@
 ---
 title: "Proposal"
+execute: 
+  warning: false
+  code: true
+fig-height: 3
+fig-width: 5
+fig-align: center
+code-fold: false
+echo: false
+number-sections: false
 ---
 
-Your proposal will go here.
+# The rise and fall of democratic states: An exploration of democratic regimes prevalence since the mid-20th century
+
+# Team Members
+ - Xi Fang
+ - Pablo Jimenez Sanchez
+ - Kirsty Herrera Garcia
+
+# Description of the project
+
+This project will explore the rise and fall of democratic regimes worldwide from 1950 to 2020, analyzing the relationship between regime change and colonial ties. In the case of the rise of democracy, we will explore the indicators of democracy these states show after the regime change. In the case of the fall of democratic regimes, we will explore the type of new regimes that have proliferated. 
+
+
+# Reasons behind choosing this project
+
+In today's global political landscape, where democratic principles face ongoing threats both domestically and internationally and authoritarian regimes have surged over the past decade, comprehending the dynamics of democratic regimes' rise and fall is essential to effectively navigating contemporary international politics. This project aims to understand the magnitude of regime changes occurring worldwide and whether this poses a genuine threat to democratic values. We also intend to explore possible explanations for these changes and how democracy is assessed globally.  
+
+#  Implementation and responsibility plan
+
+```{r}
+library(gt)
+
+tasks <- data.frame(
+  Task = c(
+    "Proposal", "Case study", "README.md", "Report",
+    "Code", "Presentation slides"),
+  Responsible = c(
+    "Kirsty",
+    "Pablo and Xi",
+    "Xi",
+    "1. Motivation – Kirsty\n2. Research question – Kirsty\n3. Background – Xi\n4. Data – Pablo\n5. Data insight – Pablo\n6. Conclusion/big picture – Pablo\n7. Limitations and future work – Xi",
+    "Everyone",
+    "Kirsty"),
+  Team_Deadlines = c(
+    "April 9th",
+    "April 9th",
+    "April 25th",
+    "1. April 13th\n2. April 13th\n3. April 25th\n4. April 13th\n5. April 25th\n6. April 25th\n7. April 25th",
+    "April 24th",
+    "April 25th"))
+
+tasks |>
+  gt() |>
+  tab_header(
+    title = "Tasks"
+  ) %>%
+  cols_label(
+    Task = "Task",
+    Responsible = "Responsible",
+    Team_Deadlines = "Team deadlines"
+  ) |>
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+```
+
+
+
