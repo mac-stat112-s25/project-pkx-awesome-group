@@ -36,15 +36,15 @@ book:
     search: true
 
   chapters:
-    - index.qmd
-    - part: "Effective Teamwork"
-      chapters:
-        - src/et/KirstyHG.qmd
-        - src/Xi-Fang.qmd
-    - part: "EDA"
-     chapters: 
-       - src/eda/KirstyHG.qmd
-
+  - index.qmd
+  - part: "Effective Teamwork"
+    chapters:
+    - src/et/KirstyHG.qmd
+    - src/Xi-Fang.qmd
+  - part: "EDA"
+    chapters: 
+    - src/eda/KirstyHG.qmd
+     
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
