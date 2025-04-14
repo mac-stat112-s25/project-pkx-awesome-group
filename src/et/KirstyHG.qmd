@@ -1,5 +1,14 @@
 ---
-title: "KirstyHG"
+title: "Kirsty HG"
 format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
+# Effective Teamwork Summary
 
+This article emphasizes the importance of effective leadership. It advises to build relationships based on trust and loyalty rather than power dynamics. Among the  
+
+
+[Berkeley - Effective Work] (https://hr.berkeley.edu/hr-network/central-guide-managing-hr/managing-hr/interaction/team-building/steps)
