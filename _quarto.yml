@@ -44,7 +44,7 @@ book:
   - part: "EDA"
     chapters: 
     - src/eda/KirstyHG.qmd
-     
+    - src/eda/Xi-Fangeda.qmd
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
