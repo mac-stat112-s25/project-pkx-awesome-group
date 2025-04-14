@@ -37,11 +37,14 @@ book:
 
   chapters:
     - index.qmd
+    - part: "Effective Teamwork"
+      chapters:
+        - src/KirstyHG.qmd
 
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
-
+  
 
 
 format:
