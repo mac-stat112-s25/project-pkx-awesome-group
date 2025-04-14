@@ -39,7 +39,10 @@ book:
     - index.qmd
     - part: "Effective Teamwork"
       chapters:
-        - src/KirstyHG.qmd
+        - src/et/KirstyHG.qmd
+    - part: "EDA"
+     chapters: 
+       - src/eda/KirstyHG.qmd
 
   appendices:
   - src/appx/proposal.qmd
