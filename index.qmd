@@ -2,7 +2,7 @@
 title: "Report"
 execute: 
   echo: true      # change to true to show the code
-code-fold: false  # change to true to fold the code chunks
+code-fold: true  # change to true to fold the code chunks
 ---
 
 Your report will go here.
@@ -13,6 +13,17 @@ library(tidyverse)
 
 # Data 
 democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+
+```
+```{r}
+# Commonwealth 
+
+commonwealth <- democracy_data |>
+  filter(is_commonwealth == TRUE)
+
+commonwealth |>
+  group_by(country_name) |>
+  count()
 
 ```
 

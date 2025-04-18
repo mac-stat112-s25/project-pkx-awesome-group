@@ -24,3 +24,15 @@ democracy_transitions_only <- democracy_data |>
    select(country_name, year, regime_category, is_democracy, transition)
 
 ```
+
+```{r}
+# Commonwealth 
+
+commonwealth <- democracy_data |>
+  filter(is_commonwealth == TRUE)
+
+commonwealth |>
+  group_by(country_name) |>
+  count()
+```
+
