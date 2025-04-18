@@ -2,4 +2,26 @@
 title: "Xi-Fangeda"
 format: html
 ---
+```{r}
+library(tidyverse)
+library(lubridate)
+library(sf)
+library(leaflet)
+library(gganimate)
+library(janitor)
+library(cluster)
 
+library(rnaturalearth)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+data_2000 <- democracy_data |>
+  filter(year == 2000)
+
+world_data <- world |>
+  left_join(data_2000, by = c("name" = "country_name"))
+
+ggplot(world_data) +
+  geom_sf(aes(fill =is_democracy)) +
+  scale_fill_viridis_c() +
+  labs(title = "Democracy Scores in 2000")
+```
