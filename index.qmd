@@ -8,6 +8,9 @@ code-fold: false  # change to true to fold the code chunks
 Your report will go here.
 
 ```{r}
+
+library(tidyverse)
+
 # Data 
 democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
 
