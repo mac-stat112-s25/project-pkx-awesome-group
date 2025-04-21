@@ -25,3 +25,61 @@ ggplot(world_data) +
   scale_fill_viridis_c() +
   labs(title = "Democracy Scores in 2000")
 ```
+
+```{r}
+library(dplyr)
+
+
+commonwealth <- democracy_data |>
+  filter(is_commonwealth == TRUE)
+
+commonwealth |>
+  group_by(country_name) |>
+  count()
+
+```
+
+
+```{r}
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(dplyr)
+library(sf)
+
+
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+
+commonwealth_1950 <- commonwealth |>
+  filter(year == 1950)
+
+world <- world |>
+  mutate(is_commonwealth = name %in% commonwealth_1950$country_name)
+
+ggplot(data = world) +
+  geom_sf(aes(fill = is_commonwealth), color = "blue") +
+  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
+  theme_minimal() +
+  labs(title = "Commonwealth Countries in 1950", fill = "Commonwealth")
+
+  
+
+
+```
+
+```{r}
+commonwealth_2020 <- commonwealth |>
+  filter(year == 2020)
+
+world <- world |>
+  mutate(is_commonwealth = name %in% commonwealth_2020$country_name)
+
+ggplot(data = world) +
+  geom_sf(aes(fill = is_commonwealth), color = "blue") +
+  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
+  theme_minimal() +
+  labs(title = "Commonwealth Countries in 2020", fill = "Commonwealth")
+
+```
+
