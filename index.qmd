@@ -68,3 +68,53 @@ ggplot(data = world) +
   labs(title = "Commonwealth Countries in 2020", fill = "Commonwealth")
 
 ```
+
+Part II
+
+::: Democracy trends :::
+
+```{r}
+commonwealth_1950 <- commonwealth_1950 %>%
+  mutate(region = sample(c( "Africa", "Asia", "Europe", "America", "Oceania"), n(), replace = TRUE))
+
+commonwealth_2020 <- commonwealth_2020 %>%
+  mutate(region = sample(c( "Africa", "Asia", "Europe", "America", "Oceania"), n(), replace = TRUE))
+
+#getting countries
+
+commonwealth_countries_1950 <- commonwealth_1950 %>%
+  filter(is_commonwealth = TRUE) %>%
+  pull(country_name)
+
+commonwealth_countries_2020 <- commonwealth_2020 %>%
+  filter(is_commonwealth = TRUE) %>%
+  pull(country_name)
+
+```
+
+```{r}
+ggplot(commonwealth_1950, aes(x = electoral_category, fill = region)) +
+  geom_bar() +
+  theme_minimal() 
+```
+
+```{r}
+ggplot(commonwealth_2020, aes(x = electoral_category, fill = region)) +
+  geom_bar() +
+  theme_minimal() 
+```
+
+::: Changes in regime ::: 
+
+```{r}
+ggplot(commonwealth_1950, aes(x = regime_category, fill = region)) +
+  geom_bar() 
+
+```
+
+```{r}
+ggplot(commonwealth_2020, aes(x = regime_category, fill = region)) +
+  geom_bar() +
+  theme_minimal() 
+```
+
