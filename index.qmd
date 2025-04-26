@@ -95,13 +95,15 @@ commonwealth_countries_2020 <- commonwealth_2020 %>%
 ```{r}
 ggplot(commonwealth_1950, aes(x = electoral_category, fill = region)) +
   geom_bar() +
-  theme_minimal() 
+  theme_minimal() + 
+  labs(title = "Electoral Category of Commonwealth Countries in 1950", fill = "Region")
 ```
 
 ```{r}
 ggplot(commonwealth_2020, aes(x = electoral_category, fill = region)) +
   geom_bar() +
-  theme_minimal() 
+  theme_minimal() +
+  labs(title = "Electoral Category of Commonwealth Countries in 2020", fill = "Region")
 ```
 
 ::: Changes in regime ::: 
