@@ -21,12 +21,11 @@ democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 commonwealth <- democracy_data |>
   filter(is_commonwealth == TRUE)
 
-commonwealth |>
-  group_by(country_name) |>
-  count()
-
 ```
+
 ```{r}
+#| fig-height: 10
+#| fig-width: 15
 library(ggplot2)
 library(rnaturalearth)
 library(rnaturalearthdata)
@@ -47,7 +46,12 @@ ggplot(data = world) +
   geom_sf(aes(fill = is_commonwealth), color = "blue") +
   scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
   theme_minimal() +
-  labs(title = "Commonwealth Countries in 1950", fill = "Commonwealth")
+  labs(title = "Commonwealth Countries in 1950", fill = "Commonwealth") +
+    theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+  )
 
   
 
@@ -55,6 +59,8 @@ ggplot(data = world) +
 ```
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 15
 commonwealth_2020 <- commonwealth |>
   filter(year == 2020)
 
@@ -65,7 +71,12 @@ ggplot(data = world) +
   geom_sf(aes(fill = is_commonwealth), color = "blue") +
   scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
   theme_minimal() +
-  labs(title = "Commonwealth Countries in 2020", fill = "Commonwealth")
+  labs(title = "Commonwealth Countries in 2020", fill = "Commonwealth") +
+  theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+  )
 
 ```
 
@@ -75,48 +86,206 @@ Part II
 
 ```{r}
 commonwealth_1950 <- commonwealth_1950 %>%
-  mutate(region = sample(c( "Africa", "Asia", "Europe", "America", "Oceania"), n(), replace = TRUE))
+  mutate(region = case_when(
+    country_name == "Australia" ~ "Oceania",
+    country_name == "Canada" ~ "America",
+    country_name == "India" ~ "Asia",
+    country_name == "New Zealand" ~ "Oceania",
+    country_name == "Pakistan" ~ "Asia",
+    country_name == "South Africa" ~ "Africa",
+    country_name == "Sri Lanka" ~ "Asia",
+    country_name == "Tonga" ~ "Oceania",
+    country_name == "United Kingdom" ~ "Europe"))
 
 commonwealth_2020 <- commonwealth_2020 %>%
-  mutate(region = sample(c( "Africa", "Asia", "Europe", "America", "Oceania"), n(), replace = TRUE))
+  mutate(region = case_when(
+    country_name %in% c("Botswana", "Cameroon", "Ghana", "Kenya", "Lesotho", "Malawi",
+                        "Mauritius", "Mozambique", "Namibia", "Nigeria", "Rwanda", 
+                        "Seychelles", "Sierra Leone", "South Africa", "Swaziland", 
+                        "Tanzania", "Uganda", "Zambia") ~ "Africa",
+    
+    country_name %in% c("Bangladesh", "Brunei", "India", "Maldives","Malaysia",
+                        "Pakistan", "Singapore", "Sri Lanka") ~ "Asia",
+    
+    country_name %in% c("Cyprus", "Malta", "United Kingdom") ~ "Europe",
+    
+    country_name %in% c("Australia", "Kiribati", "Nauru", "New Zealand", 
+                        "Papua New Guinea", "Samoa", "Solomon Islands", 
+                        "Tonga", "Tuvalu", "Vanuatu") ~ "Oceania",
+    
+    country_name %in% c("Antigua and Barbuda", "Bahamas", "Barbados", "Belize", 
+                        "Canada", "Dominica", "Grenada", "Guyana", "Jamaica", 
+                        "St. Kitts & Nevis", "St. Lucia", "St.Vincent & Grenadines", 
+                        "Trinidad &Tobago") ~ "America"))
 
-#getting countries
-
-commonwealth_countries_1950 <- commonwealth_1950 %>%
-  filter(is_commonwealth = TRUE) %>%
-  pull(country_name)
-
-commonwealth_countries_2020 <- commonwealth_2020 %>%
-  filter(is_commonwealth = TRUE) %>%
-  pull(country_name)
 
 ```
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 13
 ggplot(commonwealth_1950, aes(x = electoral_category, fill = region)) +
   geom_bar() +
-  theme_minimal() + 
-  labs(title = "Electoral Category of Commonwealth Countries in 1950", fill = "Region")
+  labs(title = "Electoral Category of Commonwealth Countries in 1950",
+       x = "Electoral category",
+       y = "Amount of Countries",
+       fill = "Region") +
+  theme_minimal() +
+   theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14)
+  )
+  
 ```
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 12
 ggplot(commonwealth_2020, aes(x = electoral_category, fill = region)) +
   geom_bar() +
+  labs(title = "Electoral Category of Commonwealth Countries in 2020", 
+       x = "Electoral category",
+       y = "Amount of Countries",
+       fill = "Region") +
   theme_minimal() +
-  labs(title = "Electoral Category of Commonwealth Countries in 2020", fill = "Region")
+   theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14)
+  )
+  
 ```
 
 ::: Changes in regime ::: 
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 12
 ggplot(commonwealth_1950, aes(x = regime_category, fill = region)) +
-  geom_bar() 
+  geom_bar() +
+  labs(title = "Regime Categories of Commonwealth Countries in 1950",
+       x = "Regime Category",
+       y = "Amount of Countries",
+       fill = "Region") +
+  theme_minimal() +
+   theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14)
+  )
+  
 
 ```
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 13
+
 ggplot(commonwealth_2020, aes(x = regime_category, fill = region)) +
   geom_bar() +
-  theme_minimal() 
+   labs(title = "Regime Categories of Commonwealth Countries in 2020",
+       x = "Regime Category",
+       y = "Amount of Countries",
+       fill = "Region") +
+  theme_minimal() +
+    theme(
+    plot.title = element_text(size = 20, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14)
+  )
+```
+Part III
+
+::: Democrary Over Time :::
+
+```{r}
+#| fig-height: 20
+#| fig-width: 25
+
+commonwealth |>
+  ggplot(aes(x = year, fill = is_democracy)) +
+  geom_bar(position = "fill") +
+  facet_wrap(~ country_name, scales = "free_y") +
+  labs(title = "Democracy Status Over Time in Commonwealth Countries",
+       y = "Proportion Democratic",
+       x = "Year",
+       fill = "Democractic State") +
+  theme_minimal() +
+   theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14)
+  )
+```
+
+::: Earliest and Latest Regimes in the Commonwealth :::
+
+```{r}
+commonwealth_1950 |>
+  ggplot(aes(x = fct_infreq(regime_category))) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Regime Types in Commonwealth Countries in 1950",
+       x = "Regime Type", y = "Number of Countries")
+
+commonwealth_2020 |>
+  ggplot(aes(x = fct_infreq(regime_category))) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Current Regime Types in Commonwealth Countries",
+       x = "Regime Type", y = "Number of Countries")
+```
+
+```{r}
+#| fig-height: 20
+#| fig-width: 20
+commonwealth <- commonwealth |>
+  mutate(region = case_when(
+    country_name %in% c("Botswana", "Cameroon", "Ghana", "Kenya", "Lesotho", "Malawi",
+                        "Mauritius", "Mozambique", "Namibia", "Nigeria", "Rwanda", 
+                        "Seychelles", "Sierra Leone", "South Africa", "Swaziland", 
+                        "Tanzania", "Uganda", "Zambia") ~ "Africa",
+    
+    country_name %in% c("Bangladesh", "Brunei", "India", "Maldives","Malaysia",
+                        "Pakistan", "Singapore", "Sri Lanka") ~ "Asia",
+    
+    country_name %in% c("Cyprus", "Malta", "United Kingdom") ~ "Europe",
+    
+    country_name %in% c("Australia", "Kiribati", "Nauru", "New Zealand", 
+                        "Papua New Guinea", "Samoa", "Solomon Islands", 
+                        "Tonga", "Tuvalu", "Vanuatu") ~ "Oceania",
+    
+    country_name %in% c("Antigua and Barbuda", "Bahamas", "Barbados", "Belize", 
+                        "Canada", "Dominica", "Grenada", "Guyana", "Jamaica", 
+                        "St. Kitts & Nevis", "St. Lucia", "St.Vincent & Grenadines", 
+                        "Trinidad &Tobago") ~ "America"))
+
+commonwealth |>
+  filter(region == "Africa") |>
+  ggplot(aes(x = year, fill = regime_category, color = is_democracy)) + 
+  geom_bar(position = "fill", size = 0.2) +
+  scale_color_manual(values = c("TRUE" = "green", "FALSE" = "red")) +
+  facet_wrap(~ country_name, scales = "free_y") +
+  labs(
+    title = "Democracy and Regime Types Across Time in African Commonwealth Countries",
+    x = "Year",
+    y = "Proportion",
+    fill = "Regime Type",
+    color = "Democracy"
+  ) +
+  theme_minimal()
 ```
 
