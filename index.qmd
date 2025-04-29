@@ -122,132 +122,77 @@ commonwealth_2020 <- commonwealth_2020 %>%
 ```
 
 ```{r}
-#| fig-height: 10
-#| fig-width: 13
-ggplot(commonwealth_1950, aes(x = electoral_category, fill = region)) +
+ggplot(commonwealth_1950, aes(x = is_democracy, fill = region)) +
   geom_bar() +
   labs(title = "Electoral Category of Commonwealth Countries in 1950",
        x = "Electoral category",
        y = "Amount of Countries",
        fill = "Region") +
-  theme_minimal() +
-   theme(
-    plot.title = element_text(size = 16, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
+  theme_minimal() 
   
 ```
 
 ```{r}
-#| fig-height: 10
-#| fig-width: 12
-ggplot(commonwealth_2020, aes(x = electoral_category, fill = region)) +
+
+ggplot(commonwealth_2020, aes(x = is_democracy, fill = region)) +
   geom_bar() +
   labs(title = "Electoral Category of Commonwealth Countries in 2020", 
        x = "Electoral category",
        y = "Amount of Countries",
        fill = "Region") +
-  theme_minimal() +
-   theme(
-    plot.title = element_text(size = 16, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
+  theme_minimal() 
   
 ```
 
 ::: Changes in regime ::: 
 
 ```{r}
-#| fig-height: 10
-#| fig-width: 12
-ggplot(commonwealth_1950, aes(x = regime_category, fill = region)) +
+#| fig-height: 3
+#| fig-width: 7
+ggplot(commonwealth_1950, aes(y = fct_infreq(regime_category), fill = region)) +
   geom_bar() +
   labs(title = "Regime Categories of Commonwealth Countries in 1950",
-       x = "Regime Category",
-       y = "Amount of Countries",
+       y = "Regime Category",
+       x = "Number of Countries per Regime",
        fill = "Region") +
-  theme_minimal() +
-   theme(
-    plot.title = element_text(size = 16, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
-  
+  theme_minimal()
 
 ```
 
 ```{r}
-#| fig-height: 10
-#| fig-width: 13
+#| fig-height: 3
+#| fig-width: 7
 
-ggplot(commonwealth_2020, aes(x = regime_category, fill = region)) +
+
+ggplot(commonwealth_2020, aes(y = fct_infreq(regime_category), fill = region)) +
   geom_bar() +
    labs(title = "Regime Categories of Commonwealth Countries in 2020",
-       x = "Regime Category",
-       y = "Amount of Countries",
+       x = "Number of Countries per Regime",
+       y = "Regime Category",
        fill = "Region") +
-  theme_minimal() +
-    theme(
-    plot.title = element_text(size = 20, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
+  theme_minimal() 
 ```
+
 Part III
 
 ::: Democrary Over Time :::
 
 ```{r}
-#| fig-height: 20
-#| fig-width: 25
+#| fig-height: 25
+#| fig-width: 10
 
 commonwealth |>
   ggplot(aes(x = year, fill = is_democracy)) +
   geom_bar(position = "fill") +
-  facet_wrap(~ country_name, scales = "free_y") +
+  facet_wrap(~ country_name, scales = "free_y", ncol = 3) +
   labs(title = "Democracy Status Over Time in Commonwealth Countries",
        y = "Proportion Democratic",
        x = "Year",
        fill = "Democractic State") +
-  theme_minimal() +
-   theme(
-    plot.title = element_text(size = 22, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
+  theme_minimal() 
 ```
 
-::: Earliest and Latest Regimes in the Commonwealth :::
 
-```{r}
-commonwealth_1950 |>
-  ggplot(aes(x = fct_infreq(regime_category))) +
-  geom_bar() +
-  coord_flip() +
-  theme_minimal() +
-  labs(title = "Regime Types in Commonwealth Countries in 1950",
-       x = "Regime Type", y = "Number of Countries")
-
-commonwealth_2020 |>
-  ggplot(aes(x = fct_infreq(regime_category))) +
-  geom_bar() +
-  coord_flip() +
-  theme_minimal() +
-  labs(title = "Current Regime Types in Commonwealth Countries",
-       x = "Regime Type", y = "Number of Countries")
-```
 
 ```{r}
 #| fig-height: 20
