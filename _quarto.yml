@@ -41,6 +41,7 @@ book:
     chapters:
     - src/et/KirstyHG.qmd
     - src/Xi-Fang.qmd
+    - src/et/PabloJS.qmd
   - part: "EDA"
     chapters: 
     - src/eda/KirstyHG.qmd
