@@ -124,8 +124,8 @@ commonwealth_2020 <- commonwealth_2020 %>%
 ```{r}
 ggplot(commonwealth_1950, aes(x = is_democracy, fill = region)) +
   geom_bar() +
-  labs(title = "Electoral Category of Commonwealth Countries in 1950",
-       x = "Electoral category",
+  labs(title = "Democracy in Commonwealth Countries (1950)",
+       x = "Democracy",
        y = "Amount of Countries",
        fill = "Region") +
   theme_minimal() 
@@ -136,8 +136,8 @@ ggplot(commonwealth_1950, aes(x = is_democracy, fill = region)) +
 
 ggplot(commonwealth_2020, aes(x = is_democracy, fill = region)) +
   geom_bar() +
-  labs(title = "Electoral Category of Commonwealth Countries in 2020", 
-       x = "Electoral category",
+  labs(title = "Democracy in Commonwealth Countries (2020)",
+       x = "Democracy",
        y = "Amount of Countries",
        fill = "Region") +
   theme_minimal() 
@@ -178,79 +178,51 @@ Part III
 ::: Democrary Over Time :::
 
 ```{r}
-#| fig-height: 25
-#| fig-width: 10
+cw_map <- world |>
+  left_join(commonwealth_2020, by = c("name" = "country_name"))
 
-commonwealth |>
-  ggplot(aes(x = year, fill = is_democracy)) +
-  geom_bar(position = "fill") +
-  facet_wrap(~ country_name, scales = "free_y", ncol = 3) +
-  labs(title = "Democracy Status Over Time in Commonwealth Countries",
-       y = "Proportion Democratic",
-       x = "Year",
-       fill = "Democractic State") +
-  theme_minimal() 
+ggplot(cw_map) +
+   geom_sf(aes(fill = is_democracy), color = "white") +
+  scale_fill_manual(values = c("TRUE" = "darkgreen", "FALSE" = "red", "NA" = "gray"),
+                    labels = c("TRUE" = "Democracy", "FALSE" = "Not a Democracy", "NA" = "No Data")) +
+  labs(
+    title = "Current Democracy Status in Commonwealth Countries",
+    fill = "Democratic State"
+  ) +
+  theme_minimal()
 ```
 
 
 
 ```{r}
-#| fig-height: 20
-#| fig-width: 20
-commonwealth <- commonwealth |>
-  mutate(region = case_when(
-    country_name %in% c("Botswana", "Cameroon", "Ghana", "Kenya", "Lesotho", "Malawi",
-                        "Mauritius", "Mozambique", "Namibia", "Nigeria", "Rwanda", 
-                        "Seychelles", "Sierra Leone", "South Africa", "Swaziland", 
-                        "Tanzania", "Uganda", "Zambia") ~ "Africa",
-    
-    country_name %in% c("Bangladesh", "Brunei", "India", "Maldives","Malaysia",
-                        "Pakistan", "Singapore", "Sri Lanka") ~ "Asia",
-    
-    country_name %in% c("Cyprus", "Malta", "United Kingdom") ~ "Europe",
-    
-    country_name %in% c("Australia", "Kiribati", "Nauru", "New Zealand", 
-                        "Papua New Guinea", "Samoa", "Solomon Islands", 
-                        "Tonga", "Tuvalu", "Vanuatu") ~ "Oceania",
-    
-    country_name %in% c("Antigua and Barbuda", "Bahamas", "Barbados", "Belize", 
-                        "Canada", "Dominica", "Grenada", "Guyana", "Jamaica", 
-                        "St. Kitts & Nevis", "St. Lucia", "St.Vincent & Grenadines", 
-                        "Trinidad &Tobago") ~ "America"))
-library(ggpattern)
-library(scales)
+#| fig-height: 15
+#| fig-width: 10
 
-commonwealth |>
-  filter(region == "Africa") |>
-  ggplot(aes(x = year, fill = regime_category, pattern = is_democracy)) +
-  geom_bar_pattern(
-    position = "fill",
-    color = "white",              
-    pattern_color = "white", 
+library(ggpattern)
+library(ggthemes)
+
+
+africa_map <- world |>
+  filter(region_un == "Africa") |>
+  left_join(commonwealth_2020, by = c("name" = "country_name"))
+
+ggplot(africa_map) +
+  geom_sf_pattern(
+    aes(fill = regime_category, pattern = is_democracy),
+    color = "white",
+    pattern_color = "white",
     pattern_density = 0.3,
-    pattern_spacing = 0.02, 
+    pattern_spacing = 0.02,
     pattern_key_scale_factor = 0.6,
     size = 0.2
   ) +
-  scale_fill_viridis_d(option = "plasma") +  
+  scale_fill_viridis_d(option = "plasma", na.value = "gray80") +
   scale_pattern_manual(values = c("TRUE" = "stripe", "FALSE" = "none")) +
-  facet_wrap(~ country_name, scales = "free_y") +
   labs(
-    title = "Democracy and Regime Types Across Time in African Commonwealth Countries",
-    x = "Year",
-    y = "Proportion",
+    title = "Regime Types and Democracy Status in African Commonwealth Countries in 2020",
     fill = "Regime Type",
-    pattern = "Democracy Status"
+    pattern = "Democracy"
   ) +
-  theme_minimal() +
-  theme(
-    strip.text = element_text(size = 10),
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(size = 22, face = "bold"),
-    legend.title = element_text(size = 14),
-    legend.text = element_text(size = 12),
-    axis.text = element_text(size = 12),
-    axis.title = element_text(size = 14)
-  )
+  theme_map()
 ```
 
