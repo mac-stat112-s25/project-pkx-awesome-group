@@ -13,6 +13,7 @@ library(cluster)
 
 library(rnaturalearth)
 world <- ne_countries(scale = "medium", returnclass = "sf")
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
 
 data_2000 <- democracy_data |>
   filter(year == 2000)
@@ -21,8 +22,7 @@ world_data <- world |>
   left_join(data_2000, by = c("name" = "country_name"))
 
 ggplot(world_data) +
-  geom_sf(aes(fill =is_democracy)) +
-  scale_fill_viridis_c() +
+  geom_sf(aes(fill = is_democracy)) +
   labs(title = "Democracy Scores in 2000")
 ```
 

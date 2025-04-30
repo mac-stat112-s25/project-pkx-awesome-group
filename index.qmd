@@ -178,6 +178,9 @@ Part III
 ::: Democrary Over Time :::
 
 ```{r}
+#| fig-height: 10
+#| fig-width: 15
+#| 
 cw_map <- world |>
   left_join(commonwealth_2020, by = c("name" = "country_name"))
 
@@ -189,14 +192,18 @@ ggplot(cw_map) +
     title = "Current Democracy Status in Commonwealth Countries",
     fill = "Democratic State"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(size = 20, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12)
+  )
 ```
 
 
 
 ```{r}
-#| fig-height: 15
-#| fig-width: 10
+#| fig-height: 10
+#| fig-width: 15
 
 library(ggpattern)
 library(ggthemes)
@@ -223,6 +230,10 @@ ggplot(africa_map) +
     fill = "Regime Type",
     pattern = "Democracy"
   ) +
-  theme_map()
+  theme_map() +
+  theme(plot.title = element_text(size = 20, face = "bold"),
+    legend.title = element_text(size = 14),
+    legend.text = element_text(size = 12)
+  )
 ```
 
