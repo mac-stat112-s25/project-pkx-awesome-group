@@ -1,0 +1,42 @@
+---
+title: "PabloJS"
+format: html
+---
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(dplyr)
+library(sf)
+
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+```
+
+```{r}
+commonwealth <- democracy_data |>
+  filter(is_commonwealth == TRUE)
+
+commonwealth_1950 <- commonwealth |>
+  filter(year == 1950)
+
+commonwealth_2020 <- commonwealth |>
+  filter(year == 2020)
+```
+
+# Distribution of regime and Electoral categories
+
+```{r}
+table(commonwealth_1950$electoral_category)
+table(commonwealth_2020$electoral_category)
+
+table(commonwealth_1950$regime_category)
+table(commonwealth_2020$regime_category)
+
+```
+
+# How are the democratic trends in common wealth countries?
+
+# How these ones might variate from region to region?
