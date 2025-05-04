@@ -84,7 +84,7 @@ ggplot(data = world) +
 
 ::: {.callout-note title="Commonwealth Across Time"}
 
-
+The number of commonwealth countries have increased between 1950 and 2020, and most of the new members come from African countries and south Asian countries. The interesting point lies in the colonial history of these countries and their relationship with the Commonwealth. Equally worthy of consideration is the relationship between this model of increasing membership in Africa and Asia and neocolonialism.
 
 :::
 
@@ -152,7 +152,7 @@ ggplot(commonwealth_2020, aes(x = is_democracy, fill = region)) +
 
 ::: {.callout-note title="Democracy Trends Insights"}
 
-
+The most important takeaways from the graphed data are that overall, there was a higher trend in democratic commonwealth countries both in 1950 and 2020. However, it is important to note the increase of commonwealth countries in 2020, which makes us understand that there is a higher proportion of non-democratic countries in Africa than there were in 1950, which would be key for our further analysis.
 
 :::
 
@@ -187,7 +187,7 @@ ggplot(commonwealth_2020, aes(y = fct_infreq(regime_category), fill = region)) +
 
 ::: {.callout-note title="Regime Change Insights"}
 
-
+For the next group of graphs, we decided to narrow our focus to the change in type of regime in regions of the world from 1950 to 2020. As we have seen before, there is still a higher proportion of democratic commonwealth countries, however, it is important to highlight how there is a higher amount of African commonwealth countries in 2020 that have a dictatorship regime in contrast with other regions.
 
 :::
 
@@ -217,7 +217,9 @@ ggplot(cw_map) +
 
 ::: {.callout-note title="Current Democratic States in the Commonwealth"}
 
-
+The plot shows a world map with Commonwealth countries categorized by their current democracy status. Here's how the countries are represented:
+ - Green countries: These are the Commonwealth countries that are currently considered democracies.
+ - Red countries: These are the Commonwealth countries that are not currently considered democracies.
 
 :::
 
@@ -258,7 +260,7 @@ ggplot(africa_map_2020) +
 
 ::: {.callout-note title="Regime Types and Democracy Status in African Commonwealth Countries in 2020"}
 
-
+This map highlights that African Commonwealth countries in 2020 are divided between democratic, mixed, and authoritarian systems. Southern Africa seems to be the region with relatively more stable democracies, while the central and northern regions of the continent remain significantly under authoritarian rule, with several nations still struggling with democratic transitions.
 
 :::
 
