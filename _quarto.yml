@@ -11,7 +11,7 @@ project:
 
 
 book:
-  title: "project title"
+  title: "Paths to Democracy: Exploring Regime Transitions and Democratic Stability in the Commonwealth of Nations"
   author: ["Kirsty Herrera Garcia", "Pablo Jimenez Sanchez", "Xi Fang"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full

@@ -5,36 +5,47 @@ execute:
 code-fold: true  # change to true to fold the code chunks
 ---
 
-Your report will go here.
+# Motivation. 
+
+In today's global political landscape, democratic principles face challenges as authoritarian regimes have risen significantly in the past decade. Understanding democratization and regime change dynamics is crucial for navigating contemporary politics and safeguarding democratic values.
+
+This project focuses on the Commonwealth of Nations,  a unique political association of countries with shared historical ties, to investigate how democratic regimes have evolved within this group. By studying regime transitions and levels of democracy across Commonwealth countries, we aim to assess the extent to which recent global shifts toward authoritarianism are reflected within the Commonwealth. Our goal is to understand the magnitude of these changes, explore possible explanations for patterns of democratization and regression, and evaluate how democracy is assessed across different contexts.
+
+Through this analysis, we hope to contribute to broader conversations about the resilience of democratic systems and the vulnerabilities they face in an increasingly complex and contested international environment.
+
+# Research Question.
+
+What are the patterns of democratic transition among Commonwealth countries, and how do they vary across different regions, such as Africa?
+
+# Data Collection
+
+The data was obtained from TidyTuesday, a weekly community activity and podcast hosted by the Data Science Learning community. This specific dataset was curated and published on November 5, 2024, focusing on changes in democracy and dictatorship worldwide. The data are part of a meta-analysis publication, “Democracy and Dictatorship Revisited” by José Cheibub, Jennifer Gandhi, and James Vreeland (Cheibub, Gandhi, and Vreeland 2010). This publication was an extension of the paper “Classifying Political Regimes” by Mike Alvarez, José Antonio Cheibub, Fernando Limongi, and Adam Przeworski (Alvarez et al. 1996), which overall analyzed the impact of regime changes. 
+
+The democracy data consisted of 14,768 datapoints from the countries and years the data was recorded, encompassing 43 types of measurements. From these, 11 were categorical, including the country name, country code, regime category, monarch's name, president's name, etc. Another 15 were numerical variables, including year, regime category index, monarch accession year, etc. Lastly, the other 17 were logical variables (TRUE or FALSE), which included whether it is a commonwealth, whether it is a female monarch, whether it is a democracy, etc. However, due to our focus on Commonwealth countries, some data wrangling was necessary to filter our two-year focus period (1950-2020) with the countries considered to be Commonwealths according to the data. Also, for further analysis, we had to add another column with the regions of each country in the list.
+
+# Data Insight 
 
 ```{r}
-
 library(tidyverse)
-
-# Data 
-democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
-
-```
-```{r}
-# Commonwealth 
-
-commonwealth <- democracy_data |>
-  filter(is_commonwealth == TRUE)
-
-```
-
-```{r}
-#| fig-height: 10
-#| fig-width: 15
 library(ggplot2)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 library(sf)
 
+# Data 
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+# Commonwealth 
+commonwealth <- democracy_data |>
+  filter(is_commonwealth == TRUE)
+```
+
+## Commonwealth Background
+```{r}
+#| fig-height: 10
+#| fig-width: 15
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
-
 
 commonwealth_1950 <- commonwealth |>
   filter(year == 1950)
@@ -53,14 +64,6 @@ ggplot(data = world) +
     legend.text = element_text(size = 12),
   )
 
-  
-
-
-```
-
-```{r}
-#| fig-height: 10
-#| fig-width: 15
 commonwealth_2020 <- commonwealth |>
   filter(year == 2020)
 
@@ -77,12 +80,15 @@ ggplot(data = world) +
     legend.title = element_text(size = 14),
     legend.text = element_text(size = 12),
   )
-
 ```
 
-Part II
+::: {.callout-note title="Commonwealth Across Time"}
 
-::: Democracy trends :::
+
+
+:::
+
+## Democracy trends
 
 ```{r}
 commonwealth_1950 <- commonwealth_1950 %>%
@@ -144,7 +150,13 @@ ggplot(commonwealth_2020, aes(x = is_democracy, fill = region)) +
   
 ```
 
-::: Changes in regime ::: 
+::: {.callout-note title="Democracy Trends Insights"}
+
+
+
+:::
+
+## Change in Regimes
 
 ```{r}
 #| fig-height: 3
@@ -173,9 +185,13 @@ ggplot(commonwealth_2020, aes(y = fct_infreq(regime_category), fill = region)) +
   theme_minimal() 
 ```
 
-Part III
+::: {.callout-note title="Regime Change Insights"}
 
-::: Democrary Over Time :::
+
+
+:::
+
+## Democrary Visualizations
 
 ```{r}
 #| fig-height: 10
@@ -199,7 +215,11 @@ ggplot(cw_map) +
   )
 ```
 
+::: {.callout-note title="Current Democratic States in the Commonwealth"}
 
+
+
+:::
 
 ```{r}
 #| fig-height: 10
@@ -208,12 +228,11 @@ ggplot(cw_map) +
 library(ggpattern)
 library(ggthemes)
 
-
-africa_map <- world |>
+africa_map_2020 <- world |>
   filter(region_un == "Africa") |>
   left_join(commonwealth_2020, by = c("name" = "country_name"))
 
-ggplot(africa_map) +
+ggplot(africa_map_2020) +
   geom_sf_pattern(
     aes(fill = regime_category, pattern = is_democracy),
     color = "white",
@@ -237,3 +256,16 @@ ggplot(africa_map) +
   )
 ```
 
+::: {.callout-note title="Regime Types and Democracy Status in African Commonwealth Countries in 2020"}
+
+
+
+:::
+
+# Conclusion
+
+Overall, while a majority of commonwealth countries have leaned towards democracy by holding competitive elections and adopting different democratic regimes, there has been an uneven transformation in some. Mixed and civil dictatorship regimes still exist, especially in the region of Africa, where the challenges of democratic consolidation remain unfinished. Although the Commonwealth as an organization championed democratic values, it is clear that there is a lack of enforcement of this idea in different countries due to their unique historical, social, and political dynamics.
+
+# Limitations and Future Work
+
+Our project has two main limitations. First, the selection of countries included in our study is very limited. Due to the nature of the Commonwealth, most member states are concentrated in Africa and Central America, with only a few countries outside the United Kingdom that could be considered traditional Western nations. This selection bias reduces the diversity of our results, as we are unable to examine the democratization processes of countries from regions such as Eastern Europe or broader parts of Asia during the same period. The second major limitation concerns the definition of democratization in our data. While democratization can involve a wide range of factors, including more complex dimensions such as women suffrage, our project adopts a very narrow definition, primarily focusing on whether democratic elections exist. As a result, we may overlook critical stages in certain countries' democratization processes and risk making conclusions that are too definitive. Potential improvements to our research include expanding the analysis to cover a broader range of countries from different regions and conducting more detailed year-by-year categorizations, even though this would significantly increase the workload. Additionally, rather than using a binary classification of democracy (i.e., democratic or non-democratic), we could implement a scoring system to assess the level of democracy. For example, a country could earn points for features such as holding democratic elections or allowing women to run for office, and the total score would then be used to assess the degree of democratization.
