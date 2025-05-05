@@ -13,29 +13,15 @@ democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 
 
 ```{r}
-# Define rise and fall of democracy 
-democracy_transitions_only <- democracy_data |>
-  group_by(country_name) |>
-  mutate(
-    previous_democracy = lag(is_democracy),
-    transition = case_when(
-      previous_democracy == FALSE & is_democracy == TRUE ~ "rise",
-      previous_democracy == TRUE & is_democracy == FALSE ~ "fall")) |>
-   select(country_name, year, regime_category, is_democracy, transition)
+## overview of the data; 
+    ExpData(data=Carseats,type=1)
+## structure of the data    
+    ExpData(data=Carseats,type=2)
 
 ```
 
 ```{r}
-# Commonwealth 
 
-commonwealth <- democracy_data |>
-  filter(is_commonwealth == TRUE)
-
-commonwealth |>
-  group_by(country_name) |>
-  count()
-```
-```{r}
 
 ```
 
