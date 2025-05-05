@@ -13,21 +13,21 @@ number-sections: false
 
 # The rise and fall of democratic states: An exploration of democratic regimes prevalence since the mid-20th century
 
-# Team Members
+## Team Members
  - Xi Fang
  - Pablo Jimenez Sanchez
  - Kirsty Herrera Garcia
 
-# Description of the project
+## Description.
 
 This project will explore the rise and fall of democratic regimes worldwide from 1950 to 2020, analyzing the relationship between regime change and colonial ties. In the case of the rise of democracy, we will explore the indicators of democracy these states show after the regime change. In the case of the fall of democratic regimes, we will explore the type of new regimes that have proliferated. 
 
 
-# Reasons behind choosing this project
+## Motivation.
 
 In today's global political landscape, where democratic principles face ongoing threats both domestically and internationally and authoritarian regimes have surged over the past decade, comprehending the dynamics of democratic regimes' rise and fall is essential to effectively navigating contemporary international politics. This project aims to understand the magnitude of regime changes occurring worldwide and whether this poses a genuine threat to democratic values. We also intend to explore possible explanations for these changes and how democracy is assessed globally.  
 
-#  Implementation and responsibility plan
+##  Implementation Plan.
 
 ```{r}
 library(gt)
