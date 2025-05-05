@@ -5,6 +5,8 @@ execute:
 code-fold: true  # change to true to fold the code chunks
 ---
 
+# Video Presentation.
+
 # Motivation. 
 
 In today's global political landscape, democratic principles face challenges as authoritarian regimes have risen significantly in the past decade. Understanding democratization and regime change dynamics is crucial for navigating contemporary politics and safeguarding democratic values.
@@ -271,3 +273,7 @@ Overall, while a majority of commonwealth countries have leaned towards democrac
 # Limitations and Future Work
 
 Our project has two main limitations. First, the selection of countries included in our study is very limited. Due to the nature of the Commonwealth, most member states are concentrated in Africa and Central America, with only a few countries outside the United Kingdom that could be considered traditional Western nations. This selection bias reduces the diversity of our results, as we are unable to examine the democratization processes of countries from regions such as Eastern Europe or broader parts of Asia during the same period. The second major limitation concerns the definition of democratization in our data. While democratization can involve a wide range of factors, including more complex dimensions such as women suffrage, our project adopts a very narrow definition, primarily focusing on whether democratic elections exist. As a result, we may overlook critical stages in certain countries' democratization processes and risk making conclusions that are too definitive. Potential improvements to our research include expanding the analysis to cover a broader range of countries from different regions and conducting more detailed year-by-year categorizations, even though this would significantly increase the workload. Additionally, rather than using a binary classification of democracy (i.e., democratic or non-democratic), we could implement a scoring system to assess the level of democracy. For example, a country could earn points for features such as holding democratic elections or allowing women to run for office, and the total score would then be used to assess the degree of democratization.
+
+# Presentation Slides
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQbiQDoSQbTIDK_hnCoSH9YAC2ZVZi7iMsuv_oLLdl2HeaHaUXIfqgGahM5QOVR6BZlARsQ92hbJ31u/pubembed?start=true&loop=true&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
