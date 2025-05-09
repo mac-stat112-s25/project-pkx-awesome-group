@@ -1,85 +1,27 @@
 ---
-title: "Xi-Fangeda"
+title: "Xi Fang"
 format: html
 ---
 ```{r}
 library(tidyverse)
-library(lubridate)
-library(sf)
-library(leaflet)
-library(gganimate)
-library(janitor)
-library(cluster)
+library(SmartEDA)
 
-library(rnaturalearth)
-world <- ne_countries(scale = "medium", returnclass = "sf")
 democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
 
-data_2000 <- democracy_data |>
-  filter(year == 2000)
-
-world_data <- world |>
-  left_join(data_2000, by = c("name" = "country_name"))
-
-ggplot(world_data) +
-  geom_sf(aes(fill = is_democracy)) +
-  labs(title = "Democracy Scores in 2000")
 ```
-
 ```{r}
-library(dplyr)
-
-
-commonwealth <- democracy_data |>
-  filter(is_commonwealth == TRUE)
-
-commonwealth |>
-  group_by(country_name) |>
-  count()
-
-```
-
-
-```{r}
-library(ggplot2)
-library(rnaturalearth)
-library(rnaturalearthdata)
-library(dplyr)
-library(sf)
-
-
-world <- ne_countries(scale = "medium", returnclass = "sf")
-
-
-commonwealth_1950 <- commonwealth |>
-  filter(year == 1950)
-
-world <- world |>
-  mutate(is_commonwealth = name %in% commonwealth_1950$country_name)
-
-ggplot(data = world) +
-  geom_sf(aes(fill = is_commonwealth), color = "blue") +
-  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
-  theme_minimal() +
-  labs(title = "Commonwealth Countries in 1950", fill = "Commonwealth")
-
-  
+# data analyzing; 
+    ExpData(data=democracy_data,type=1)
+# data structure    
+    ExpData(data=democracy_data,type=2)
+# numerical variables
+    ExpNumStat(data = democracy_data)
+# category variables
+    ExpCTable(data = democracy_data, Target = "is_democracy", margin = 1, clim = 10)
 
 
 ```
 
-```{r}
-commonwealth_2020 <- commonwealth |>
-  filter(year == 2020)
 
-world <- world |>
-  mutate(is_commonwealth = name %in% commonwealth_2020$country_name)
 
-ggplot(data = world) +
-  geom_sf(aes(fill = is_commonwealth), color = "blue") +
-  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "grey90")) +
-  theme_minimal() +
-  labs(title = "Commonwealth Countries in 2020", fill = "Commonwealth")
-
-```
 

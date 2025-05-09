@@ -2,8 +2,8 @@
 title: "Xi Fang"
 format: html
 ---
-
-I have found an insightful article titled "Kate Spade and Co. Exec: This Is How I Pick Perfect Teammates" by Mary Beech, Executive Vice President and Chief Marketing Officer of Kate Spade & Company. In this piece, Beech shares her experiences and principles for building effective teams, drawing from her tenure at The Walt Disney Company and Kate Spade & Company.
+""
+I have found an insightful article titled "Kate Spade and Co. Exec: This Is How I Pick Perfect Teammates" by Mary Beech:https://time.com/4388615/kate-spade-team-building/, Executive Vice President and Chief Marketing Officer of Kate Spade & Company. In this piece, Beech shares her experiences and principles for building effective teams, drawing from her tenure at The Walt Disney Company and Kate Spade & Company.
 Beech emphasizes five key principles for creating a powerful team:
 Passion Over Perfect Qualifications: She advocates for selecting team members who exhibit genuine passion, as it drives sustained performance and commitment.
 Consider the Whole Person: Beyond credentials, understanding a candidate's interests and motivations ensures better team synergy and creativity.
