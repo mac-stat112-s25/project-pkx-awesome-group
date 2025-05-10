@@ -25,7 +25,6 @@ democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 # Numerical summary
 ExpNumStat(data = democracy_data)
 
-# Categorical summary
 ExpCTable(data = democracy_data, Target = "is_democracy", margin = 1, clim = 10)
 
 ```

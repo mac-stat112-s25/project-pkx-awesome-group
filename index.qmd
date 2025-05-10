@@ -5,7 +5,9 @@ execute:
 code-fold: true  # change to true to fold the code chunks
 ---
 
-# Video Presentation.
+# Video Presentation 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iCaUCUOIoVA?si=iHFFbYUPgr7IIoXy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 # Motivation. 
 
@@ -277,7 +279,3 @@ Our project has two main limitations. First, the selection of countries included
 # Presentation Slides
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQbiQDoSQbTIDK_hnCoSH9YAC2ZVZi7iMsuv_oLLdl2HeaHaUXIfqgGahM5QOVR6BZlARsQ92hbJ31u/pubembed?start=true&loop=true&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-# Presentation Recording 
-
-https://youtu.be/iCaUCUOIoVA
