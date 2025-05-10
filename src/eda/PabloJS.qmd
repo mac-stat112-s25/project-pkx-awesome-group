@@ -37,20 +37,7 @@ table(commonwealth_2020$regime_category)
 
 ```
 
-# EDA Smart analysis
 
-```{r}
-
-install.packages("devtools")
-devtools::install_github("daya6489/SmartEDA",ref = "develop")
-
-install.packages("SmartEDA")
-install.packages("ISLR")
-library("ISLR")
-library("SmartEDA")
-
-Carseats= ISLR::Carseats
-```
 # Overview of the Data
 
 ```{r}
@@ -65,17 +52,6 @@ ExpData(data=democracy_data,type=2)
 ```{r}
 ## Summary statistics by – overall
     ExpNumStat(democracy_data,by="A",gp=NULL,Qnt=seq(0,1,0.1),MesofShape=2,Outlier=TRUE,round=2)
-```
-```{r}
-## Frequency or custom tables for categorical variables
-    ExpCTable(democracy_data,Target=NULL,margin=1,clim=10,nlim=5,round=2,bin=NULL,per=T)
-    ExpCTable(democracy_data,Target="Price",margin=1,clim=10,nlim=NULL,round=2,bin=4,per=F)
-    ExpCTable(democracy_data,Target="Urban",margin=1,clim=10,nlim=NULL,round=2,bin=NULL,per=F)    
-
-## Summary statistics of categorical variables
-    ExpCatStat(democracy_data,Target="Urban",result = "Stat",clim=10,nlim=5,Pclass="Yes")
-## Inforamtion value and Odds value
-    ExpCatStat(Carseats,Target="Urban",result = "IV",clim=10,nlim=5,Pclass="Yes")
 ```
 
 
