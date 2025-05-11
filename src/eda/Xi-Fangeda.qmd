@@ -1,0 +1,27 @@
+---
+title: "Xi Fang"
+format: html
+---
+```{r}
+library(tidyverse)
+library(SmartEDA)
+
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+
+```
+```{r}
+# data analyzing; 
+    ExpData(data=democracy_data,type=1)
+# data structure    
+    ExpData(data=democracy_data,type=2)
+# numerical variables
+    ExpNumStat(data = democracy_data)
+# category variables
+    ExpCTable(data = democracy_data, Target = "is_democracy", margin = 1, clim = 10)
+
+
+```
+
+
+
+

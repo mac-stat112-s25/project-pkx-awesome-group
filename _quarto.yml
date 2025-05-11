@@ -11,8 +11,8 @@ project:
 
 
 book:
-  title: "project title"
-  author: ["student 1 first and last name", "student 2 first and last name", "student 3 first and last name"]
+  title: "Paths to Democracy: Exploring Regime Transitions and Democratic Stability in the Commonwealth of Nations"
+  author: ["Kirsty Herrera Garcia", "Pablo Jimenez Sanchez", "Xi Fang"]
   date: today  # use today to update date published based on last time project was edited
   date-format: full
   # favicon: images/logo.png
@@ -29,18 +29,28 @@ book:
 
 
   sidebar:
-    title: "sidebar title"
+    title: "PKX Awesome Group"
     collapse-level: 2
     style: "docked"
     pinned: true
     search: true
 
   chapters:
-    - index.qmd
-
+  - index.qmd
+  - part: "Effective Teamwork"
+    chapters:
+    - src/et/KirstyHG.qmd
+    - src/et/Xi-Fang.qmd
+    - src/et/PabloJS.qmd
+  - part: "EDA"
+    chapters: 
+    - src/eda/KirstyHG.qmd
+    - src/eda/Xi-Fangeda.qmd
+    - src/eda/PabloJS.qmd
   appendices:
   - src/appx/proposal.qmd
   - src/appx/case-study.qmd
+  
 
 
 
@@ -63,6 +73,7 @@ format:
     code-block-border-left: "#1482FA"
     code-tools: true
     page-layout: full
+    code-fold: true
 
   # pdf:
   #   documentclass: scrreprt
@@ -71,6 +82,9 @@ format:
 
 
 execute:
+  error: false
+  warning: false
+  echo: true
   cache: true
 #   freeze: auto # remove when using GitHub action to execute code
 

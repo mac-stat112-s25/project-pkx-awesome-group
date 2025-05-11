@@ -1,0 +1,31 @@
+---
+title: "KirstyHG"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(SmartEDA)
+
+# Data 
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+
+```
+
+
+```{r}
+## overview of the data; 
+    ExpData(data=democracy_data,type=1)
+## structure of the data    
+    ExpData(data=democracy_data,type=2)
+
+```
+
+```{r}
+# Numerical summary
+ExpNumStat(data = democracy_data)
+
+ExpCTable(data = democracy_data, Target = "is_democracy", margin = 1, clim = 10)
+
+```
+

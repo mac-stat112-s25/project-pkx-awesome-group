@@ -1,0 +1,27 @@
+---
+title: "Kirsty HG"
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
+---
+
+This article emphasizes the importance of effective leadership. It advises to build relationships based on trust and loyalty rather than power dynamics. Among the key practices that this article include are:
+
+  - Value all ideas and encourage open expression.
+  - Be emotionally aware and set the tone by being open and empathetic.
+  - Resolve conflicts early and steer focus on team goals.
+  - Communicate clearly and consistently.
+  - Promote trust and cooperation among team members as well as between the leader and the team.
+  - Share information and highlight how individual roles contribute to the overall mission.
+  - Facilitate healthy communication through openness, listening, and clarification—not constant
+meetings.
+  - Set clear values, goals, and performance standards, and regularly review progress.
+  - Use consensus for decision-making, ensuring everyone is committed and heard.
+  - Create team ground rules collaboratively and ensure everyone commits to them.
+  - Foster brainstorming and healthy debate to encourage innovation.
+  - Set parameters for consensus-building sessions, avoiding rushed decisions and false agreement by probing for honest input.
+
+
+[Berkeley - Effective Work] (https://hr.berkeley.edu/hr-network/central-guide-managing-hr/managing-hr/interaction/team-building/steps)

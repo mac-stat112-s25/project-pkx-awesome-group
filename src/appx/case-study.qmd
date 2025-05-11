@@ -1,5 +1,18 @@
 ---
 title: "Case Study"
+number-sections: false
 ---
 
-Your case study will go here.
+# Case Study of the number of Uber drivers in NYC
+
+In this article, by studying the number of pickups in central Manhattan traffic, they are trying to learn the relationship between the number of pickups made by Uber and the number of pickups made by taxis. This article then focuses on the details of the number of pickups that come from and tries to explain the real situation happening in the transportation market in NYC. Finally, the article explains the cause of the congestion.  
+
+The data are gathered from the Freedom of Information Law from NYC’s Taxi and Limousine Commission (TLC), which Covers Uber pickup data from April–June 2014 and April–June 2015. 
+
+From the data presented, the study highlights that Uber services have not significantly increased the risk of urban gridlock but have been replacing cabs. As we can see from the first graph, the overall pickups from both Uber and cabs increased by three million from 2014 to 2015. However, if we focus on the yellow cab pickups, we can see a decrease along with a slight increase in the green cab pickups, which explains the low overall increase.
+
+Moreover, from the choropleth map and the point plot, there is an overall increase in Uber pickups in Manhattan and other zones that the green cabs didn’t reach before. Especially in Manhattan, the lack of cabs in this zone is underscored by the number of Uber cars that add to the surprisingly low overall pickup number. From the point plot, a negative slope demonstrates that the decrease in cab usage is proportional to the increase in Uber usage, meaning that there is an equilibrium between these services.
+
+Lastly, although this demonstrates that cabs and users are able to coexist, the decrease in cabs and how this creates uncertainty regarding their presence is concerning.
+
+[Case Study](https://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/)
