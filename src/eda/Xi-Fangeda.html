@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>6&nbsp; Xi-Fangeda – Paths to Democracy: Exploring Regime Transitions and Democratic Stability in the Commonwealth of Nations</title>
+<title>6&nbsp; Xi Fang – Paths to Democracy: Exploring Regime Transitions and Democratic Stability in the Commonwealth of Nations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/eda/KirstyHG.html">EDA</a></li><li class="breadcrumb-item"><a href="../../src/eda/Xi-Fangeda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi-Fangeda</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/eda/KirstyHG.html">EDA</a></li><li class="breadcrumb-item"><a href="../../src/eda/Xi-Fangeda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi Fang</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -206,7 +206,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/eda/Xi-Fangeda.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi-Fangeda</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi Fang</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -248,9 +248,9 @@ cookieconsent.run({
         
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/eda/KirstyHG.html">EDA</a></li><li class="breadcrumb-item"><a href="../../src/eda/Xi-Fangeda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi-Fangeda</span></a></li></ol></nav><div class="quarto-title">
+<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/eda/KirstyHG.html">EDA</a></li><li class="breadcrumb-item"><a href="../../src/eda/Xi-Fangeda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi Fang</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi-Fangeda</span>
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Xi Fang</span>
 </h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
@@ -267,107 +267,288 @@ cookieconsent.run({
 
 </header><div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(cluster)</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a>data_2000 <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2000</span>)</span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a>world_data <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>  <span class="fu">left_join</span>(data_2000, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"name"</span> <span class="ot">=</span> <span class="st">"country_name"</span>))</span>
-<span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="fu">ggplot</span>(world_data) <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_democracy)) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Democracy Scores in 2000"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="Xi-Fangeda_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">group_by</span>(country_name) <span class="sc">|&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># data analyzing; </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 55 × 2
-# Groups:   country_name [55]
-   country_name            n
-   &lt;chr&gt;               &lt;int&gt;
- 1 Antigua and Barbuda    54
- 2 Australia              71
- 3 Bahamas                47
- 4 Bangladesh             49
- 5 Barbados               54
- 6 Belize                 40
- 7 Botswana               54
- 8 Brunei                 37
- 9 Cameroon               25
-10 Canada                 71
-# ℹ 45 more rows</code></pre>
+<pre><code>                                          Descriptions       Value
+1                                   Sample size (nrow)       14768
+2                              No. of variables (ncol)          43
+3                    No. of numeric/interger variables          15
+4                              No. of factor variables           0
+5                                No. of text variables          11
+6                             No. of logical variables          17
+7                          No. of identifier variables           0
+8                                No. of date variables           0
+9             No. of zero variance variables (uniform)           1
+10               %. of variables having complete cases   6.98% (3)
+11   %. of variables having &gt;0% and &lt;50% missing cases 67.44% (29)
+12 %. of variables having &gt;=50% and &lt;90% missing cases   18.6% (8)
+13          %. of variables having &gt;=90% missing cases   6.98% (3)</code></pre>
 </div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># data structure    </span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>   Index               Variable_Name Variable_Type Sample_n Missing_Count
+1      1                country_name     character    14768             0
+2      2                country_code     character    14768             0
+3      3                        year       numeric    14768             0
+4      4       regime_category_index       numeric    11291          3477
+5      5             regime_category     character    14767             1
+6      6                 is_monarchy       logical    14554           214
+7      7             is_commonwealth       logical    14625           143
+8      8                monarch_name     character     2883         11885
+9      9      monarch_accession_year       numeric     2883         11885
+10    10           monarch_birthyear       numeric     2741         12027
+11    11           is_female_monarch       logical     2883         11885
+12    12                is_democracy       logical    14706            62
+13    13             is_presidential       logical    14635           133
+14    14              president_name     character     7972          6796
+15    15     president_accesion_year       numeric     7872          6896
+16    16         president_birthyear       numeric     7869          6899
+17    17            is_interim_phase       logical     7851          6917
+18    18         is_female_president       logical     7852          6916
+19    19                   is_colony       logical    14627           141
+20    20                   colony_of     character     2560         12208
+21    21     colony_administrated_by     character      586         14182
+22    22                is_communist       logical    14706            62
+23    23       has_regime_change_lag       logical    14706            62
+24    24           spatial_democracy       numeric    14706            62
+25    25         parliament_chambers       numeric    12295          2473
+26    26     has_proportional_voting       logical    11734          3034
+27    27             election_system     character    11794          2974
+28    28         lower_house_members       numeric    11843          2925
+29    29         upper_house_members       numeric     4278         10490
+30    30         third_house_members       numeric       14         14754
+31    31        has_new_constitution       logical    13335          1433
+32    32           has_full_suffrage       logical    13571          1197
+33    33        suffrage_restriction     character     1034         13734
+34    34    electoral_category_index       numeric    14509           259
+35    35          electoral_category     character    14509           259
+36    36           spatial_electoral       numeric    14691            77
+37    37             has_alternation       logical    14743            25
+38    38               is_multiparty       logical    14743            25
+39    39  has_free_and_fair_election       logical    14743            25
+40    40 parliamentary_election_year       numeric    13807           961
+41    41              election_month     character     2955         11813
+42    42               election_year       numeric     2791         11977
+43    43      has_postponed_election       logical    13806           962
+   Per_of_Missing No_of_distinct_values
+1           0.000                   208
+2           0.000                   208
+3           0.000                    71
+4           0.235                     6
+5           0.000                    58
+6           0.014                     2
+7           0.010                     2
+8           0.805                   111
+9           0.805                    70
+10          0.814                    65
+11          0.805                     2
+12          0.004                     2
+13          0.009                     2
+14          0.460                  1125
+15          0.467                    83
+16          0.467                   106
+17          0.468                     2
+18          0.468                     2
+19          0.010                     2
+20          0.827                    24
+21          0.960                    10
+22          0.004                     2
+23          0.004                     2
+24          0.004                    38
+25          0.167                     3
+26          0.205                     2
+27          0.201                   148
+28          0.198                   407
+29          0.710                   207
+30          0.999                     1
+31          0.097                     2
+32          0.081                     2
+33          0.930                    33
+34          0.018                     4
+35          0.018                     5
+36          0.005                   107
+37          0.002                     2
+38          0.002                     2
+39          0.002                     2
+40          0.065                     3
+41          0.800                    43
+42          0.811                    73
+43          0.065                     2</code></pre>
 </div>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(rnaturalearthdata)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">library</span>(sf)</span>
-<span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a></span>
-<span id="cb4-14"><a href="#cb4-14"></a>world <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a>  <span class="fu">mutate</span>(<span class="at">is_commonwealth =</span> name <span class="sc">%in%</span> commonwealth_1950<span class="sc">$</span>country_name)</span>
-<span id="cb4-16"><a href="#cb4-16"></a></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_commonwealth), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"grey90"</span>)) <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Commonwealth Countries in 1950"</span>, <span class="at">fill =</span> <span class="st">"Commonwealth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="Xi-Fangeda_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># numerical variables</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="fu">ExpNumStat</span>(<span class="at">data =</span> democracy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>                     Vname Group    TN nNeg nZero  nPos NegInf PosInf NA_Value
+10           election_year   All 14768    0     0  2791      0      0    11977
+7      lower_house_members   All 14768    0     0 11843      0      0     2925
+2   monarch_accession_year   All 14768    0     0  2883      0      0    11885
+3        monarch_birthyear   All 14768    0     0  2741      0      0    12027
+4  president_accesion_year   All 14768    0     0  7872      0      0     6896
+5      president_birthyear   All 14768    0     0  7869      0      0     6899
+6        spatial_democracy   All 14768    0  4405 10301      0      0       62
+9        spatial_electoral   All 14768    0   392 14299      0      0       77
+8      upper_house_members   All 14768    0     0  4278      0      0    10490
+1                     year   All 14768    0     0 14768      0      0        0
+   Per_of_Missing        sum  min  max     mean   median      SD    CV     IQR
+10         81.101  5546387.0 1865 2020 1987.240 1989.000  20.349 0.010  35.000
+7          19.806  2122173.0    4 2987  179.192  102.000 282.514 1.577 173.500
+2          80.478  5654576.0 1904 2020 1961.351 1952.000  22.402 0.011  25.000
+3          81.440  5281356.0 1858 1980 1926.799 1926.000  18.883 0.010  21.000
+4          46.696 15624521.0 1848 2020 1984.822 1987.000  20.063 0.010  32.000
+5          46.716 15195710.0 1859 1984 1931.085 1934.000  20.118 0.010  27.000
+6           0.420     6509.3    0    1    0.443    0.333   0.388 0.877   0.800
+9           0.521    29216.1    0    3    1.989    2.000   0.841 0.423   1.467
+8          71.032   417533.0    8 1325   97.600   56.000 153.358 1.571  73.000
+1           0.000 29314480.0 1950 2020 1985.000 1985.000  20.495 0.010  36.000
+   Skewness Kurtosis
+10   -0.264   -0.725
+7     6.536   56.651
+2     0.412   -0.035
+3     0.087    0.222
+4    -0.543    1.275
+5    -0.418   -0.211
+6     0.269   -1.428
+9    -0.417   -0.809
+8     4.396   22.968
+1     0.000   -1.200</code></pre>
 </div>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>world <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">mutate</span>(<span class="at">is_commonwealth =</span> name <span class="sc">%in%</span> commonwealth_2020<span class="sc">$</span>country_name)</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_commonwealth), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"grey90"</span>)) <span class="sc">+</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Commonwealth Countries in 2020"</span>, <span class="at">fill =</span> <span class="st">"Commonwealth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="Xi-Fangeda_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># category variables</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="fu">ExpCTable</span>(<span class="at">data =</span> democracy_data, <span class="at">Target =</span> <span class="st">"is_democracy"</span>, <span class="at">margin =</span> <span class="dv">1</span>, <span class="at">clim =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>                      VARIABLE
+1      colony_administrated_by
+2      colony_administrated_by
+3      colony_administrated_by
+4      colony_administrated_by
+5      colony_administrated_by
+6      colony_administrated_by
+7      colony_administrated_by
+8      colony_administrated_by
+9      colony_administrated_by
+10     colony_administrated_by
+11     colony_administrated_by
+12          electoral_category
+13          electoral_category
+14          electoral_category
+15          electoral_category
+16          electoral_category
+17          electoral_category
+18       regime_category_index
+19       regime_category_index
+20       regime_category_index
+21       regime_category_index
+22       regime_category_index
+23       regime_category_index
+24       regime_category_index
+25       regime_category_index
+26         parliament_chambers
+27         parliament_chambers
+28         parliament_chambers
+29         parliament_chambers
+30         parliament_chambers
+31    electoral_category_index
+32    electoral_category_index
+33    electoral_category_index
+34    electoral_category_index
+35    electoral_category_index
+36    electoral_category_index
+37 parliamentary_election_year
+38 parliamentary_election_year
+39 parliamentary_election_year
+40 parliamentary_election_year
+41 parliamentary_election_year
+                                                              CATEGORY
+1                                                              Bahamas
+2                                                              Jamaica
+3                                                                   NA
+4                                   Part of the British Leward Islands
+5  Part of the British Leward Islands joint with St. Christopher-Nevis
+6                    Part of the Federal Colony of the Leeward Islands
+7                   Part of the Trust Territory of the Pacific Islands
+8                                                       Self-governing
+9                           Self-governing as the Netherlands Antilles
+10                                                           Suspended
+11                                                               TOTAL
+12                                                democratic elections
+13                                                                  NA
+14                                                        no elections
+15                                non-democratic multi-party elections
+16                                              single-party elections
+17                                                               TOTAL
+18                                                                   0
+19                                                                   1
+20                                                                   2
+21                                                                   3
+22                                                                   4
+23                                                                   5
+24                                                                  NA
+25                                                               TOTAL
+26                                                                   1
+27                                                                   2
+28                                                                   3
+29                                                                  NA
+30                                                               TOTAL
+31                                                                   0
+32                                                                   1
+33                                                                   2
+34                                                                   3
+35                                                                  NA
+36                                                               TOTAL
+37                                                                   0
+38                                                                   1
+39                                                                   2
+40                                                                  NA
+41                                                               TOTAL
+   is_democracy:FALSE is_democracy:NA is_democracy:TRUE TOTAL
+1                   0               0                10    10
+2                   6               0                16    22
+3                7937              62              6183 14182
+4                   8               0                17    25
+5                   1               0                 5     6
+6                   1               0                17    18
+7                  28               0                12    40
+8                  15               0               324   339
+9                   0               0               122   122
+10                  4               0                 0     4
+11               8000              62              6706 14768
+12                 15               0              6699  6714
+13                196              62                 1   259
+14               1915               0                 0  1915
+15               3597               0                 6  3603
+16               2277               0                 0  2277
+17               8000              62              6706 14768
+18                  4               0              2727  2731
+19                  1               0              1159  1160
+20                  2               0              1508  1510
+21               3001               0                 1  3002
+22               1885               0                 1  1886
+23               1002               0                 0  1002
+24               2105              62              1310  3477
+25               8000              62              6706 14768
+26               4021               0              3760  7781
+27               1650               0              2851  4501
+28                 10               0                 3    13
+29               2319              62                92  2473
+30               8000              62              6706 14768
+31               1915               0                 0  1915
+32               2277               0                 0  2277
+33               3597               0                 6  3603
+34                 15               0              6699  6714
+35                196              62                 1   259
+36               8000              62              6706 14768
+37               5917               0              4894 10811
+38               1184               1              1809  2994
+39                  1               0                 1     2
+40                898              61                 2   961
+41               8000              62              6706 14768</code></pre>
 </div>
 </div>
 
@@ -1005,90 +1186,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">---</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="an">title:</span><span class="co"> "Xi-Fangeda"</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">---</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="in">```{r}</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="fu">library</span>(sf)</span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="fu">library</span>(cluster)</span>
-<span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb6-17"><a href="#cb6-17"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span>
-<span id="cb6-19"><a href="#cb6-19"></a></span>
-<span id="cb6-20"><a href="#cb6-20"></a>data_2000 <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb6-21"><a href="#cb6-21"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2000</span>)</span>
-<span id="cb6-22"><a href="#cb6-22"></a></span>
-<span id="cb6-23"><a href="#cb6-23"></a>world_data <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a>  <span class="fu">left_join</span>(data_2000, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"name"</span> <span class="ot">=</span> <span class="st">"country_name"</span>))</span>
-<span id="cb6-25"><a href="#cb6-25"></a></span>
-<span id="cb6-26"><a href="#cb6-26"></a><span class="fu">ggplot</span>(world_data) <span class="sc">+</span></span>
-<span id="cb6-27"><a href="#cb6-27"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_democracy)) <span class="sc">+</span></span>
-<span id="cb6-28"><a href="#cb6-28"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Democracy Scores in 2000"</span>)</span>
-<span id="cb6-29"><a href="#cb6-29"></a><span class="in">```</span></span>
-<span id="cb6-30"><a href="#cb6-30"></a></span>
-<span id="cb6-33"><a href="#cb6-33"></a><span class="in">```{r}</span></span>
-<span id="cb6-34"><a href="#cb6-34"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-35"><a href="#cb6-35"></a></span>
-<span id="cb6-36"><a href="#cb6-36"></a></span>
-<span id="cb6-37"><a href="#cb6-37"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb6-38"><a href="#cb6-38"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-39"><a href="#cb6-39"></a></span>
-<span id="cb6-40"><a href="#cb6-40"></a>commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb6-41"><a href="#cb6-41"></a>  <span class="fu">group_by</span>(country_name) <span class="sc">|&gt;</span></span>
-<span id="cb6-42"><a href="#cb6-42"></a>  <span class="fu">count</span>()</span>
-<span id="cb6-43"><a href="#cb6-43"></a></span>
-<span id="cb6-44"><a href="#cb6-44"></a><span class="in">```</span></span>
-<span id="cb6-45"><a href="#cb6-45"></a></span>
-<span id="cb6-46"><a href="#cb6-46"></a></span>
-<span id="cb6-49"><a href="#cb6-49"></a><span class="in">```{r}</span></span>
-<span id="cb6-50"><a href="#cb6-50"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-51"><a href="#cb6-51"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb6-52"><a href="#cb6-52"></a><span class="fu">library</span>(rnaturalearthdata)</span>
-<span id="cb6-53"><a href="#cb6-53"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-54"><a href="#cb6-54"></a><span class="fu">library</span>(sf)</span>
-<span id="cb6-55"><a href="#cb6-55"></a></span>
-<span id="cb6-56"><a href="#cb6-56"></a></span>
-<span id="cb6-57"><a href="#cb6-57"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
-<span id="cb6-58"><a href="#cb6-58"></a></span>
-<span id="cb6-59"><a href="#cb6-59"></a></span>
-<span id="cb6-60"><a href="#cb6-60"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb6-61"><a href="#cb6-61"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
-<span id="cb6-62"><a href="#cb6-62"></a></span>
-<span id="cb6-63"><a href="#cb6-63"></a>world <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb6-64"><a href="#cb6-64"></a>  <span class="fu">mutate</span>(<span class="at">is_commonwealth =</span> name <span class="sc">%in%</span> commonwealth_1950<span class="sc">$</span>country_name)</span>
-<span id="cb6-65"><a href="#cb6-65"></a></span>
-<span id="cb6-66"><a href="#cb6-66"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
-<span id="cb6-67"><a href="#cb6-67"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_commonwealth), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb6-68"><a href="#cb6-68"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"grey90"</span>)) <span class="sc">+</span></span>
-<span id="cb6-69"><a href="#cb6-69"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-70"><a href="#cb6-70"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Commonwealth Countries in 1950"</span>, <span class="at">fill =</span> <span class="st">"Commonwealth"</span>)</span>
-<span id="cb6-71"><a href="#cb6-71"></a></span>
-<span id="cb6-72"><a href="#cb6-72"></a>  </span>
-<span id="cb6-73"><a href="#cb6-73"></a></span>
-<span id="cb6-74"><a href="#cb6-74"></a></span>
-<span id="cb6-75"><a href="#cb6-75"></a><span class="in">```</span></span>
-<span id="cb6-76"><a href="#cb6-76"></a></span>
-<span id="cb6-79"><a href="#cb6-79"></a><span class="in">```{r}</span></span>
-<span id="cb6-80"><a href="#cb6-80"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb6-81"><a href="#cb6-81"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
-<span id="cb6-82"><a href="#cb6-82"></a></span>
-<span id="cb6-83"><a href="#cb6-83"></a>world <span class="ot">&lt;-</span> world <span class="sc">|&gt;</span></span>
-<span id="cb6-84"><a href="#cb6-84"></a>  <span class="fu">mutate</span>(<span class="at">is_commonwealth =</span> name <span class="sc">%in%</span> commonwealth_2020<span class="sc">$</span>country_name)</span>
-<span id="cb6-85"><a href="#cb6-85"></a></span>
-<span id="cb6-86"><a href="#cb6-86"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world) <span class="sc">+</span></span>
-<span id="cb6-87"><a href="#cb6-87"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_commonwealth), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb6-88"><a href="#cb6-88"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"grey90"</span>)) <span class="sc">+</span></span>
-<span id="cb6-89"><a href="#cb6-89"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-90"><a href="#cb6-90"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Commonwealth Countries in 2020"</span>, <span class="at">fill =</span> <span class="st">"Commonwealth"</span>)</span>
-<span id="cb6-91"><a href="#cb6-91"></a></span>
-<span id="cb6-92"><a href="#cb6-92"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="an">title:</span><span class="co"> "Xi Fang"</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">---</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="in">```{r}</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12"></a></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="in">```</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="in">```{r}</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="co"># data analyzing; </span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>    <span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">1</span>)</span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># data structure    </span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>    <span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">2</span>)</span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="co"># numerical variables</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a>    <span class="fu">ExpNumStat</span>(<span class="at">data =</span> democracy_data)</span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="co"># category variables</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a>    <span class="fu">ExpCTable</span>(<span class="at">data =</span> democracy_data, <span class="at">Target =</span> <span class="st">"is_democracy"</span>, <span class="at">margin =</span> <span class="dv">1</span>, <span class="at">clim =</span> <span class="dv">10</span>)</span>
+<span id="cb10-25"><a href="#cb10-25"></a></span>
+<span id="cb10-26"><a href="#cb10-26"></a></span>
+<span id="cb10-27"><a href="#cb10-27"></a><span class="in">```</span></span>
+<span id="cb10-28"><a href="#cb10-28"></a></span>
+<span id="cb10-29"><a href="#cb10-29"></a></span>
+<span id="cb10-30"><a href="#cb10-30"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
