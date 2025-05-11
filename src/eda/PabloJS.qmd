@@ -37,24 +37,6 @@ table(commonwealth_2020$regime_category)
 
 ```
 
-
-# Overview of the Data
-
-```{r}
-ExpData(data=democracy_data,type=1)
-```
-
-```{r}
-ExpData(data=democracy_data,type=2)
-```
-# SUmmary of Numerical Variables
-
-```{r}
-## Summary statistics by – overall
-    ExpNumStat(democracy_data,by="A",gp=NULL,Qnt=seq(0,1,0.1),MesofShape=2,Outlier=TRUE,round=2)
-```
-
-
 # How are the democratic trends in common wealth countries?
 
 # How these ones might variate from region to region?
