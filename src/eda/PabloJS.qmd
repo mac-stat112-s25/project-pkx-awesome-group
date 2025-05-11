@@ -11,9 +11,19 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 library(sf)
+library(SmartEDA)
 
 democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
 ```
+
+```{r}
+ExpData(data=democracy_data,type=1)
+```
+
+```{r}
+ExpData(data=democracy_data,type=2)
+```
+
 
 ```{r}
 commonwealth <- democracy_data |>
@@ -24,6 +34,8 @@ commonwealth_1950 <- commonwealth |>
 
 commonwealth_2020 <- commonwealth |>
   filter(year == 2020)
+
+
 ```
 
 # Distribution of regime and Electoral categories
