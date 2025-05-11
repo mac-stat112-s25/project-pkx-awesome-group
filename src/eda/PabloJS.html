@@ -278,31 +278,144 @@ cookieconsent.run({
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(rnaturalearthdata)</span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>                                          Descriptions       Value
+1                                   Sample size (nrow)       14768
+2                              No. of variables (ncol)          43
+3                    No. of numeric/interger variables          15
+4                              No. of factor variables           0
+5                                No. of text variables          11
+6                             No. of logical variables          17
+7                          No. of identifier variables           0
+8                                No. of date variables           0
+9             No. of zero variance variables (uniform)           1
+10               %. of variables having complete cases   6.98% (3)
+11   %. of variables having &gt;0% and &lt;50% missing cases 67.44% (29)
+12 %. of variables having &gt;=50% and &lt;90% missing cases   18.6% (8)
+13          %. of variables having &gt;=90% missing cases   6.98% (3)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>   Index               Variable_Name Variable_Type Sample_n Missing_Count
+1      1                country_name     character    14768             0
+2      2                country_code     character    14768             0
+3      3                        year       numeric    14768             0
+4      4       regime_category_index       numeric    11291          3477
+5      5             regime_category     character    14767             1
+6      6                 is_monarchy       logical    14554           214
+7      7             is_commonwealth       logical    14625           143
+8      8                monarch_name     character     2883         11885
+9      9      monarch_accession_year       numeric     2883         11885
+10    10           monarch_birthyear       numeric     2741         12027
+11    11           is_female_monarch       logical     2883         11885
+12    12                is_democracy       logical    14706            62
+13    13             is_presidential       logical    14635           133
+14    14              president_name     character     7972          6796
+15    15     president_accesion_year       numeric     7872          6896
+16    16         president_birthyear       numeric     7869          6899
+17    17            is_interim_phase       logical     7851          6917
+18    18         is_female_president       logical     7852          6916
+19    19                   is_colony       logical    14627           141
+20    20                   colony_of     character     2560         12208
+21    21     colony_administrated_by     character      586         14182
+22    22                is_communist       logical    14706            62
+23    23       has_regime_change_lag       logical    14706            62
+24    24           spatial_democracy       numeric    14706            62
+25    25         parliament_chambers       numeric    12295          2473
+26    26     has_proportional_voting       logical    11734          3034
+27    27             election_system     character    11794          2974
+28    28         lower_house_members       numeric    11843          2925
+29    29         upper_house_members       numeric     4278         10490
+30    30         third_house_members       numeric       14         14754
+31    31        has_new_constitution       logical    13335          1433
+32    32           has_full_suffrage       logical    13571          1197
+33    33        suffrage_restriction     character     1034         13734
+34    34    electoral_category_index       numeric    14509           259
+35    35          electoral_category     character    14509           259
+36    36           spatial_electoral       numeric    14691            77
+37    37             has_alternation       logical    14743            25
+38    38               is_multiparty       logical    14743            25
+39    39  has_free_and_fair_election       logical    14743            25
+40    40 parliamentary_election_year       numeric    13807           961
+41    41              election_month     character     2955         11813
+42    42               election_year       numeric     2791         11977
+43    43      has_postponed_election       logical    13806           962
+   Per_of_Missing No_of_distinct_values
+1           0.000                   208
+2           0.000                   208
+3           0.000                    71
+4           0.235                     6
+5           0.000                    58
+6           0.014                     2
+7           0.010                     2
+8           0.805                   111
+9           0.805                    70
+10          0.814                    65
+11          0.805                     2
+12          0.004                     2
+13          0.009                     2
+14          0.460                  1125
+15          0.467                    83
+16          0.467                   106
+17          0.468                     2
+18          0.468                     2
+19          0.010                     2
+20          0.827                    24
+21          0.960                    10
+22          0.004                     2
+23          0.004                     2
+24          0.004                    38
+25          0.167                     3
+26          0.205                     2
+27          0.201                   148
+28          0.198                   407
+29          0.710                   207
+30          0.999                     1
+31          0.097                     2
+32          0.081                     2
+33          0.930                    33
+34          0.018                     4
+35          0.018                     5
+36          0.005                   107
+37          0.002                     2
+38          0.002                     2
+39          0.002                     2
+40          0.065                     3
+41          0.800                    43
+42          0.811                    73
+43          0.065                     2</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="distribution-of-regime-and-electoral-categories" class="level1" data-number="8"><h1 data-number="8">
 <span class="header-section-number">8</span> Distribution of regime and Electoral categories</h1>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>electoral_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>electoral_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
                 democratic elections non-democratic multi-party elections 
                                    6                                    3 </code></pre>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>electoral_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>electoral_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
                 democratic elections                         no elections 
@@ -310,13 +423,13 @@ cookieconsent.run({
 non-democratic multi-party elections 
                                   12 </code></pre>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>regime_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>regime_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
 British protected state   Civilian dictatorship Parliamentary democracy 
                       1                       2                       6 </code></pre>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>regime_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>regime_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>
   Civilian dictatorship   Military dictatorship        Mixed democratic 
@@ -963,47 +1076,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="an">title:</span><span class="co"> "PabloJS"</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">---</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="in">```{r}</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="fu">library</span>(rnaturalearthdata)</span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="fu">library</span>(sf)</span>
-<span id="cb11-15"><a href="#cb11-15"></a></span>
-<span id="cb11-16"><a href="#cb11-16"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span>
-<span id="cb11-17"><a href="#cb11-17"></a><span class="in">```</span></span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-21"><a href="#cb11-21"></a><span class="in">```{r}</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
-<span id="cb11-23"><a href="#cb11-23"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-24"><a href="#cb11-24"></a></span>
-<span id="cb11-25"><a href="#cb11-25"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb11-26"><a href="#cb11-26"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
-<span id="cb11-27"><a href="#cb11-27"></a></span>
-<span id="cb11-28"><a href="#cb11-28"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
-<span id="cb11-29"><a href="#cb11-29"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
-<span id="cb11-30"><a href="#cb11-30"></a><span class="in">```</span></span>
-<span id="cb11-31"><a href="#cb11-31"></a></span>
-<span id="cb11-32"><a href="#cb11-32"></a><span class="fu"># Distribution of regime and Electoral categories</span></span>
-<span id="cb11-33"><a href="#cb11-33"></a></span>
-<span id="cb11-36"><a href="#cb11-36"></a><span class="in">```{r}</span></span>
-<span id="cb11-37"><a href="#cb11-37"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>electoral_category)</span>
-<span id="cb11-38"><a href="#cb11-38"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>electoral_category)</span>
-<span id="cb11-39"><a href="#cb11-39"></a></span>
-<span id="cb11-40"><a href="#cb11-40"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>regime_category)</span>
-<span id="cb11-41"><a href="#cb11-41"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>regime_category)</span>
-<span id="cb11-42"><a href="#cb11-42"></a></span>
-<span id="cb11-43"><a href="#cb11-43"></a><span class="in">```</span></span>
-<span id="cb11-44"><a href="#cb11-44"></a></span>
-<span id="cb11-45"><a href="#cb11-45"></a><span class="fu"># How are the democratic trends in common wealth countries?</span></span>
-<span id="cb11-46"><a href="#cb11-46"></a></span>
-<span id="cb11-47"><a href="#cb11-47"></a><span class="fu"># How these ones might variate from region to region?</span></span>
+<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">---</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="an">title:</span><span class="co"> "PabloJS"</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">---</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="in">```{r}</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="fu">library</span>(rnaturalearthdata)</span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="fu">library</span>(sf)</span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="fu">library</span>(SmartEDA)</span>
+<span id="cb15-16"><a href="#cb15-16"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a>democracy_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv'</span>)</span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="in">```</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="in">```{r}</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a><span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">1</span>)</span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="in">```</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="in">```{r}</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="fu">ExpData</span>(<span class="at">data=</span>democracy_data,<span class="at">type=</span><span class="dv">2</span>)</span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="in">```</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a></span>
+<span id="cb15-32"><a href="#cb15-32"></a></span>
+<span id="cb15-35"><a href="#cb15-35"></a><span class="in">```{r}</span></span>
+<span id="cb15-36"><a href="#cb15-36"></a>commonwealth <span class="ot">&lt;-</span> democracy_data <span class="sc">|&gt;</span></span>
+<span id="cb15-37"><a href="#cb15-37"></a>  <span class="fu">filter</span>(is_commonwealth <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-38"><a href="#cb15-38"></a></span>
+<span id="cb15-39"><a href="#cb15-39"></a>commonwealth_1950 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
+<span id="cb15-40"><a href="#cb15-40"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1950</span>)</span>
+<span id="cb15-41"><a href="#cb15-41"></a></span>
+<span id="cb15-42"><a href="#cb15-42"></a>commonwealth_2020 <span class="ot">&lt;-</span> commonwealth <span class="sc">|&gt;</span></span>
+<span id="cb15-43"><a href="#cb15-43"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb15-44"><a href="#cb15-44"></a></span>
+<span id="cb15-45"><a href="#cb15-45"></a></span>
+<span id="cb15-46"><a href="#cb15-46"></a><span class="in">```</span></span>
+<span id="cb15-47"><a href="#cb15-47"></a></span>
+<span id="cb15-48"><a href="#cb15-48"></a><span class="fu"># Distribution of regime and Electoral categories</span></span>
+<span id="cb15-49"><a href="#cb15-49"></a></span>
+<span id="cb15-52"><a href="#cb15-52"></a><span class="in">```{r}</span></span>
+<span id="cb15-53"><a href="#cb15-53"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>electoral_category)</span>
+<span id="cb15-54"><a href="#cb15-54"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>electoral_category)</span>
+<span id="cb15-55"><a href="#cb15-55"></a></span>
+<span id="cb15-56"><a href="#cb15-56"></a><span class="fu">table</span>(commonwealth_1950<span class="sc">$</span>regime_category)</span>
+<span id="cb15-57"><a href="#cb15-57"></a><span class="fu">table</span>(commonwealth_2020<span class="sc">$</span>regime_category)</span>
+<span id="cb15-58"><a href="#cb15-58"></a></span>
+<span id="cb15-59"><a href="#cb15-59"></a><span class="in">```</span></span>
+<span id="cb15-60"><a href="#cb15-60"></a></span>
+<span id="cb15-61"><a href="#cb15-61"></a><span class="fu"># How are the democratic trends in common wealth countries?</span></span>
+<span id="cb15-62"><a href="#cb15-62"></a></span>
+<span id="cb15-63"><a href="#cb15-63"></a><span class="fu"># How these ones might variate from region to region?</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
